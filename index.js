@@ -5,12 +5,30 @@ function ticTacToeGenerator(){
   let rowSize = 3;
   let colSize = 3;
 
-  let arrXO = ['x', 'x' , 'x', 'x', 'x' , 'o', 'o', 'o', 'o', 'o'];
+  let arrXO = ['x', 'o'];
+  let xLeft = 5; 
+  let oLeft = 5;
 
   for (let i = 0; i < rowSize; i++){
     arrTicTacToe.push([]);
     for (let j = 0; j < colSize; j++){
-      let pushXO = arrXO.splice( Math.floor( (Math.random()* (arrXO.length-1) ) ) , 1);
+      
+      let pushXO = '' ;
+
+      if ( (xLeft > 0) && (oLeft > 0) ){
+        pushXO = arrXO[ Math.round( (Math.random())) ]
+        if (pushXO === 'o'){
+          oLeft--
+        } else{
+          xLeft--
+        }
+      } else if (xLeft === 0 && oLeft > 0){
+        pushXO = 'o'
+      } else{
+        pushXO = 'x'
+      }
+      //arrXO.splice( Math.floor( (Math.random() * (arrXO.length) ) ) , 1);
+
       arrTicTacToe[i].push(pushXO);
     }
   }
